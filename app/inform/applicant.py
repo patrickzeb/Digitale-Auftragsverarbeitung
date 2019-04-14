@@ -86,9 +86,9 @@ def unplausible_information(information: dict, mismatches: dict) -> None:
 
     leider ergeben sich Unstimmigkeiten zwischen Deinen eingereichten Unterlagen.
 
-    Bitte überprüfe folgende Information(en):
+    Damit wir Deinen Antrag schnellstmöglich bearbeiten können, überprüfe bitte folgende Daten:
 
-    Informationen:
+    Daten:
     """.format('' if gender == 'female' else 'r', name)
 
     for k, v in mismatches.items():
@@ -107,7 +107,7 @@ def unplausible_information(information: dict, mismatches: dict) -> None:
     print(text)
 
 
-def show_documents(application: dict, files: list):
+def show_documents(application: dict, files: list) -> None:
     print('KUNDENNACHRICHT:')
 
     print('Folgende Unterlagen wurden vom System zugeordnet:')
@@ -115,4 +115,31 @@ def show_documents(application: dict, files: list):
         if document is None:
             print('{} - Nicht vorhanden'.format(name))
         else:
+            print('{} - Vorhanden'.format(name))
             display(Image(files[document['Id']]))
+
+
+def successful_application(information: dict, product: str) -> None:
+    name = information['Selbstauskunft']['Name']
+    gender = get_gender(name)
+
+    print('KUNDENNACHRICHT:')
+
+    text = """
+    Liebe{} {},
+
+    vielen Dank für die Einsendung Deines Antrages für ein {}-Darelehen.
+
+    Wir werden Deinen Antrag innerhalb der nächsten 24 Stunden bearbeiten.
+    
+    Den Status kannst du in der Zwischenzeit hier einsehen:
+    
+    https://www.schwaebisch-hall.de/...
+    
+    Wir bedanken uns bei Dir für dein Vertrauen in uns.
+
+    Freundliche Grüße    
+    Die Bausparkasse Schwäbisch Hall
+    """.format('' if gender == 'female' else 'r', name, product)
+
+    print(text)

@@ -7,10 +7,10 @@ def selbstauskunft(document: TextAnnotation) -> dict:
     values = {
         'Name': findall('Vor- und Zuname (.*?)\n', document.text)[0],
         'Geburtsdatum': findall('Geburtsdatum\n1(.*?)\n', document.text)[0],
-        'Familienstand': findall('Anschrift\ni (.*?)\n', document.text)[0],
-        'Kinder': findall('Familienstand (.*?)\n', document.text)[0],
-        'Netto': findall('Kinder\n(.*?)Familienstand', document.text)[0],
-        'Anschrift': findall('Währungseinheiten\n(.*?) €', document.text)[0]
+        'Anschrift': findall('Anschrift\ni (.*?)\n', document.text)[0],
+        'Familienstand': findall('Familienstand (.*?)\n', document.text)[0],
+        'Kinder': findall('Kinder\n(.*?)Familienstand', document.text)[0],
+        'Netto': findall('Währungseinheiten\n(.*?) €', document.text)[0]
     }
 
     return beautify(values)
@@ -20,7 +20,7 @@ def gehaltsnachweis(document: TextAnnotation) -> dict:
     geburtsdatum = findall('Gleitzone St-Tg.\n[0-9]{5} (.*?) [0-9]', document.text)[0]
     geburtsdatum = '{}.{}.19{}'.format(geburtsdatum[:2], geburtsdatum[2:4], geburtsdatum[4:])
 
-    monat, jahr = findall('für ([A-Za-z]+) ([0-9]{4})\nPersonal-Nr', document.text)[0]
+    monat, jahr = findall('([\w]+) ([0-9]{4})\nPersonal-Nr', document.text)[0]
     monat = convert_month(monat)
     jahr = '{}.{}'.format(monat, jahr)
 
@@ -63,6 +63,9 @@ def kommunikation(document: TextAnnotation) -> dict:
 def convert_month(month: str) -> str:
     if month.lower() == 'juni':
         return '6'
+
+    if month.lower() == 'märz':
+        return '3'
 
 
 def beautify(d: dict) -> dict:

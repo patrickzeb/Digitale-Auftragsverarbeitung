@@ -27,14 +27,15 @@ def plausible_person(information: dict) -> list:
     return mismatches
 
 
-def plausible_gehaltsnachweis(information: dict) -> list:
+def valid_gehaltsnachweis(information: dict) -> list:
     mismatches = []
 
-    month = int(time.strftime('%m'))
-    year = int(time.strftime('%Y'))
+    current_month = int(time.strftime('%m'))
+    current_year = int(time.strftime('%Y'))
 
-    if year != int(information['Gehaltsnachweis']['Jahr'].split('.')[1]) or \
-            month - int(information['Gehaltsnachweis']['Jahr'].split('.')[0]) <= 1:
+    month, year = [int(value) for value in information['Gehaltsnachweis']['Jahr'].split('.')]
+
+    if current_year != year or current_month - month >= 2:
         mismatches.append('Jahr')
 
     mismatches = list(set(mismatches))
