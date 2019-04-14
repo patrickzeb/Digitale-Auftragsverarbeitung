@@ -1,0 +1,18 @@
+{
+    "Blanco": {
+        "Required": {
+            "Selbstauskunft": {
+                "Keywords": ["selbstauskunft"]
+            },
+            "Gehaltsnachweis": {
+                "Keywords": ["abrechnung"]
+            },
+            "Schufa": {
+                "Keywords": ["schufa"]
+            },
+            "Kommunikation": {
+                "Keywords": ["kommunikation"]
+            }
+        }
+    }
+}
