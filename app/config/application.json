@@ -1,0 +1,37 @@
+{
+  "Blanko": {
+    "Applicant": {
+      "Name": "Ursula Müller",
+      "Strasse": "Hinterm Mond 13",
+      "PLZ": "20095",
+      "Geburtsdatum": "23.05.1973"
+    },
+    "Product": {
+      "Name": "Annuitätendarlehen",
+      "Darlehenshöhe": "30000",
+      "Zinssatz": "3,042",
+      "Laufzeit": "36",
+      "Rate": "872,44",
+      "Gesamtbetrag": "31407,71"
+    }
+  },
+  "Dinglich": {
+    "Applicant": {
+      "Name": "Ursula Müller",
+      "Strasse": "Hinterm Mond 13",
+      "PLZ": "20095",
+      "Geburtsdatum": "23.05.1973"
+    },
+    "Product": {
+      "Name": "Annuitätendarlehen",
+      "Darlehenshöhe": "300000",
+      "Zinssatz": "3,042",
+      "Laufzeit": "420",
+      "Rate": "1154,55",
+      "Gesamtbetrag": "484911,24"
+    },
+    "Collateral": {
+      "Wert": "325000"
+    }
+  }
+}

@@ -11,7 +11,7 @@ def get_gender(name: str) -> str:
 def missing_documents(application: dict) -> None:
     missing = [name for name, document in application.items() if document is None]
 
-    name = findall('Vor- und Zuname (.*?)\n', application['Selbstauskunft'].text)[0]
+    name = findall('Vor- und Zuname (.*?)\n', application['Selbstauskunft']['Content'].text)[0]
     gender = get_gender(name)
 
     print('KUNDENNACHRICHT:')

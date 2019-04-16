@@ -60,6 +60,15 @@ def kommunikation(document: TextAnnotation) -> dict:
     return beautify(values)
 
 
+def grundbuchauszug(document: TextAnnotation) -> dict:
+    values = {
+        'Name': findall('Alleineinentum\n(.*?),', document.text)[0],
+        'Geburtsdatum': findall('Alleineinentum\n.*?, (.*?)\n', document.text)[0]
+    }
+
+    return beautify(values)
+
+
 def convert_month(month: str) -> str:
     if month.lower() == 'juni':
         return '6'
