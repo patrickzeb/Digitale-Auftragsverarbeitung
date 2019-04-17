@@ -1,3 +1,4 @@
+from importlib import import_module
 from re import findall
 
 from google.cloud.vision_v1.types import TextAnnotation
@@ -9,7 +10,7 @@ def selbstauskunft(document: TextAnnotation) -> dict:
         'Geburtsdatum': findall('Geburtsdatum\n1(.*?)\n', document.text)[0],
         'Anschrift': findall('Anschrift\ni (.*?)\n', document.text)[0],
         'Familienstand': findall('Familienstand (.*?)\n', document.text)[0],
-        'Kinder': findall('Kinder\n(.*?)Familienstand', document.text)[0],
+        # 'Kinder': findall('Kinder\n(.*?)Familienstand', document.text)[0],
         'Netto': findall('Währungseinheiten\n(.*?) €', document.text)[0]
     }
 
@@ -30,7 +31,7 @@ def gehaltsnachweis(document: TextAnnotation) -> dict:
         'Anschrift': findall('Herrn/Frau\n.*?\n(.*?)\n', document.text)[0],
         'Steuerklasse': findall('Gleitzone St-Tg.\n[0-9]{5} [0-9]{6} ([0-9])', document.text)[0],
         'Netto': findall('Auszahlungsbetrag\n(.*)\n', document.text)[0],
-        'Jahr': jahr
+        'Datum': jahr
     }
 
     return beautify(values)
@@ -75,6 +76,18 @@ def convert_month(month: str) -> str:
 
     if month.lower() == 'märz':
         return '3'
+
+
+def extract(application: dict) -> dict:
+    def func(name: str):
+        module = import_module('app.extract.information')
+        return getattr(module, name)
+
+    information = {
+        name: func(name.lower())(document['Content']) for name, document in application.items()
+    }
+
+    return information
 
 
 def beautify(d: dict) -> dict:

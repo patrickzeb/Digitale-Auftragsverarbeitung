@@ -1,7 +1,11 @@
+import json
+
 import ipywidgets as widgets
 
 
-def select_application(applications: dict) -> widgets.Dropdown:
+def open_applications() -> widgets.Dropdown:
+    applications = json.load(open('./app/config/application.json', encoding='utf-8'))
+
     unprocessed = [
         ('{} - {}'.format(name, details['Applicant']['Name'], name), name) for name, details in applications.items()
     ]
@@ -16,4 +20,4 @@ def select_application(applications: dict) -> widgets.Dropdown:
     print('Bitte wähle einen offenen Antrag aus:')
     display(dropdown)
 
-    return dropdown
+    return dropdown, applications

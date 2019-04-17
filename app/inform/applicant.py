@@ -1,6 +1,5 @@
 from re import findall
 
-from IPython.display import Image
 from gender_guesser.detector import Detector
 
 
@@ -13,8 +12,6 @@ def missing_documents(application: dict) -> None:
 
     name = findall('Vor- und Zuname (.*?)\n', application['Selbstauskunft']['Content'].text)[0]
     gender = get_gender(name)
-
-    print('KUNDENNACHRICHT:')
 
     text = """
     Liebe{} {},
@@ -47,8 +44,6 @@ def missing_information(information: dict) -> None:
     name = information['Selbstauskunft']['Name']
     gender = get_gender(name)
 
-    print('KUNDENNACHRICHT:')
-
     text = """
     Liebe{} {},
 
@@ -79,8 +74,6 @@ def unplausible_information(information: dict, mismatches: dict) -> None:
     name = information['Selbstauskunft']['Name']
     gender = get_gender(name)
 
-    print('KUNDENNACHRICHT:')
-
     text = """
     Liebe{} {},
 
@@ -107,23 +100,36 @@ def unplausible_information(information: dict, mismatches: dict) -> None:
     print(text)
 
 
-def show_documents(application: dict, files: list) -> None:
-    print('KUNDENNACHRICHT:')
+def show_information(information: dict, product: str) -> None:
+    complete = True
+    print('Die Bewilligung des {}-Darlehens erfordert folgende Informationen:'.format(product))
+    for name, details in information.items():
+        for detail, value in details.items():
+            if value is None:
+                complete = False
+                print('  {:17} - {:17} - Fehlt'.format(name, detail + ':'))
+            else:
+                print('  {:17} - {:17} - Vorhanden - {}'.format(name, detail + ':', value))
 
-    print('Folgende Unterlagen wurden vom System zugeordnet:')
+    print('\n=> Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+
+
+def show_documents(application: dict, files: list, product: str) -> None:
+    complete = True
+    print('Die Bewilligung des {}-Darlehens erfordert folgende Dokumente:'.format(product))
     for name, document in application.items():
         if document is None:
-            print('{} - Nicht vorhanden'.format(name))
+            print('  {:17} - Fehlt'.format(name + ':'))
         else:
-            print('{} - Vorhanden'.format(name))
-            display(Image(files[document['Id']]))
+            print('  {:17} - Vorhanden'.format(name + ':'))
+            # display(Image(files[document['Id']]))
+
+    print('\n=> Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
 
 
 def successful_application(information: dict, product: str) -> None:
     name = information['Selbstauskunft']['Name']
     gender = get_gender(name)
-
-    print('KUNDENNACHRICHT:')
 
     text = """
     Liebe{} {},
