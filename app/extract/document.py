@@ -33,5 +33,4 @@ def _text_detection(image_file: str) -> str:
 
 
 def text_detection(image_file: str) -> str:
-    file = image_file.split('/')[-1]
     return GOOGLE[file]

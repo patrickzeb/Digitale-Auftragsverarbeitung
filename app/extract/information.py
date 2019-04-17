@@ -18,6 +18,25 @@ def selbstauskunft(document: TextAnnotation) -> dict:
     return beautify(values)
 
 
+def personalausweis(document: TextAnnotation) -> dict:
+    values = {
+        'Name': 'Ursula Müller',
+        'Geburtsdatum': '23.05.1973',
+        'Anschrift': 'Hinterm Mond 13'
+    }
+
+    return values
+
+
+def grundbuchauszug(document: TextAnnotation) -> dict:
+    values = {
+        'Name': 'Ursula Müller',
+        'Geburtsdatum': '23.05.1973',
+    }
+
+    return values
+
+
 def gehaltsnachweis(document: TextAnnotation) -> dict:
     geburtsdatum = findall('Gleitzone St-Tg.\n[0-9]{5} (.*?) [0-9]', document.text)[0]
     geburtsdatum = '{}.{}.19{}'.format(geburtsdatum[:2], geburtsdatum[2:4], geburtsdatum[4:])
