@@ -43,7 +43,7 @@ def plausible_person(information: dict) -> list:
     anschrift = information['Selbstauskunft']['Anschrift']
     plausible = True
 
-    documents = {k: v for k, v in information.items() if k != 'Selbstauskunft'}
+    documents = {k: v for k, v in information.items() if k not in ['Selbstauskunft', 'Grundbuchauszug']}
     for doc, infos in documents.items():
         if infos['Anschrift'] != anschrift:
             mismatches.append('Anschrift')

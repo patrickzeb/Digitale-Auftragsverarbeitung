@@ -104,7 +104,7 @@ def extract(application: dict) -> dict:
         return getattr(module, name)
 
     information = {
-        name: func(name.lower())(document['Content']) for name, document in application.items()
+        name: func(name.lower())(document['Content']) for name, document in application.items() if document is not None
     }
 
     return information

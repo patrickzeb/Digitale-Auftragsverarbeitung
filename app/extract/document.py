@@ -33,4 +33,4 @@ def _text_detection(image_file: str) -> str:
 
 
 def text_detection(image_file: str) -> str:
-    return GOOGLE[file]
+    return GOOGLE[image_file]
