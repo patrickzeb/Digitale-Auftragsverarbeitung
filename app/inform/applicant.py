@@ -1,10 +1,12 @@
 from re import findall
 
-from gender_guesser.detector import Detector
+
+# from gender_guesser.detector import Detector
 
 
 def get_gender(name: str) -> str:
-    return Detector(case_sensitive=False).get_gender(name.split()[0])
+    # return Detector(case_sensitive=False).get_gender(name.split()[0])
+    return 'female'
 
 
 def missing_documents(application: dict) -> None:

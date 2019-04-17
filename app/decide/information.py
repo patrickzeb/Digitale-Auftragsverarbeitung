@@ -71,7 +71,7 @@ def valid_gehaltsnachweis(information: dict) -> list:
 
     print('  {:40} - {}'.format('Gehaltsnachweis nicht älter als 1 Monat?', 'Ja' if plausible else 'Nein'))
 
-    netto = int(information['Selbstauskunft']['Netto'])
+    netto = int(information['Selbstauskunft']['Netto'].replace('.', ''))
     plausible = True
 
     if netto != int(information['Gehaltsnachweis']['Netto'].split(',')[0]):
