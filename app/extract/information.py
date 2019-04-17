@@ -1,7 +1,8 @@
 from importlib import import_module
 from re import findall
 
-from google.cloud.vision_v1.types import TextAnnotation
+# from google.cloud.vision_v1.types import TextAnnotation
+from app.extract.document import TextAnnotation
 
 
 def selbstauskunft(document: TextAnnotation) -> dict:

@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="960e61e1-1f99-4179-a685-a6adb4fb8e4d" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/upload/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/upload/6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/google/google.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decide/information.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decide/information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/extract/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/extract/document.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/workflow.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
-              <selected id="1" />
+              <selected id="0" />
             </state>
           </provider>
         </entry>
@@ -27,8 +28,41 @@
       <file leaf-file-name="information.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/decide/information.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+            <state relative-caret-position="154">
+              <caret line="22" selection-start-line="22" selection-end-line="31" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="document.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/extract/document.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/google/google.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-544">
+              <caret line="10" column="439" selection-start-line="10" selection-start-column="439" selection-end-line="10" selection-end-column="439" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="information.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/extract/information.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-119">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,6 +89,8 @@
       <find>documents</find>
       <find>{:17}</find>
       <find>{:30}</find>
+      <find>document.text</find>
+      <find>\\</find>
     </findStrings>
     <replaceStrings>
       <replace>mapping</replace>
@@ -66,6 +102,8 @@
       <replace>files</replace>
       <replace>{:30}</replace>
       <replace>{:40}</replace>
+      <replace>document['text']</replace>
+      <replace>\</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -103,7 +141,9 @@
         <option value="$PROJECT_DIR$/app/inform/applicant.py" />
         <option value="$PROJECT_DIR$/app/extract/information.py" />
         <option value="$PROJECT_DIR$/workflow.ipynb" />
+        <option value="$PROJECT_DIR$/app/google/google" />
         <option value="$PROJECT_DIR$/app/extract/document.py" />
+        <option value="$PROJECT_DIR$/app/google/google.json" />
         <option value="$PROJECT_DIR$/app/decide/information.py" />
       </list>
     </option>
@@ -131,6 +171,52 @@
               <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
               <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="decide" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="extract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="google" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="inform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="widget" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="jupyter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3_Prototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3_Prototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="scratch" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -239,16 +325,25 @@
       <option name="project" value="LOCAL" />
       <updated>1555506653490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Default Changelist">
+      <created>1555506726324</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555506726324</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21633889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21633889" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32626426" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32626426" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.4045677" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.42251223" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -262,7 +357,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -324,7 +418,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/inform/system.py" />
     <entry file="file://$PROJECT_DIR$/app/decide/document.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -594,16 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/extract/information.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/google/1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -614,35 +697,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/extract/document.py">
+    <entry file="file://$PROJECT_DIR$/app/decide/document.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="28" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/decide/document.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/workflow.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="1" />
+          <selected id="0" />
         </state>
       </provider>
       <provider editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/google/google.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544">
+          <caret line="10" column="439" selection-start-line="10" selection-start-column="439" selection-end-line="10" selection-end-column="439" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/extract/document.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/extract/information.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/decide/information.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="84" column="21" lean-forward="true" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+        <state relative-caret-position="154">
+          <caret line="22" selection-start-line="22" selection-end-line="31" selection-end-column="87" />
         </state>
       </provider>
     </entry>

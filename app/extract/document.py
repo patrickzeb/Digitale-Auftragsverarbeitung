@@ -2,17 +2,26 @@ import json
 import os
 from io import open
 
-from google.cloud import vision
-from google.protobuf.json_format import MessageToJson
+# from google.cloud import vision
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'{}\app\config\google_api.json'.format(os.getcwd())
 
 client = vision.ImageAnnotatorClient()
 
-FOLDER = './app/google/'
+
+class TextAnnotation(object):
+    def __init__(self, text: str):
+        self.text = text
 
 
-def text_detection(image_file: str) -> str:
+FILE = './app/google/google.json'
+with open(FILE, encoding='utf-8') as file:
+    GOOGLE = json.load(file)['Documents']
+
+GOOGLE = {name: TextAnnotation(document['Text']) for name, document in GOOGLE.items()}
+
+
+def _text_detection(image_file: str) -> str:
     with open(image_file, 'rb') as image:
         content = image.read()
 
@@ -23,10 +32,6 @@ def text_detection(image_file: str) -> str:
     return document
 
 
-def to_json(document, image_file) -> None:
-    serialized = MessageToJson(document, preserving_proto_field_name=True)
-
-    file = '{}{}.json'.format(FOLDER, image_file.split('/')[-1].split('.')[0])
-
-    with open(file, 'w') as outfile:
-        json.dump(serialized, outfile)
+def text_detection(image_file: str) -> str:
+    file = image_file.split('/')[-1]
+    return GOOGLE[file]
