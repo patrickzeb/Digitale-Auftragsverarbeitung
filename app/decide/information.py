@@ -83,3 +83,29 @@ def valid_gehaltsnachweis(information: dict) -> list:
     mismatches = list(set(mismatches))
 
     return mismatches
+
+
+def validate(application: dict, information: dict) -> None:
+    collateralized = 'Collateral' in application
+
+    print('Die Validierung des {}besicherten Darlehens basiert auf folgenden Regeln:'.format(
+        '' if collateralized else 'un'
+    ))
+
+    mismatches = []
+
+    valid = True
+    if int(application['Rate']) <= 2 * int(information['Selbstauskunft']['Netto']):
+        valid = False
+    else:
+        mismatches.append('Rate')
+
+    print('  {:40} - {}'.format('Rate kleiner als halbes Nettoeinkommen', 'Ja' if valid else 'Nein'))
+
+    valid = True
+    print('  {:40} - {}'.format('Festes Arbeitsverhältnis länger als 5 Jahre', 'Ja' if valid else 'Nein'))
+
+    if len(mismatches) > 0:
+        print('\n=> Aussteuerung notwendig.')
+    else:
+        print('\n=> Aussteuerung nicht notwendig.')

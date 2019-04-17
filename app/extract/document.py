@@ -1,5 +1,6 @@
 import json
 from io import open
+from time import sleep
 
 
 # from google.cloud import vision
@@ -33,4 +34,5 @@ def _text_detection(image_file: str) -> str:
 
 
 def text_detection(image_file: str) -> str:
+    sleep(2)
     return GOOGLE[image_file]

@@ -12,7 +12,9 @@ def selbstauskunft(document: TextAnnotation) -> dict:
         'Anschrift': findall('Anschrift\ni (.*?)\n', document.text)[0],
         'Familienstand': findall('Familienstand (.*?)\n', document.text)[0],
         # 'Kinder': findall('Kinder\n(.*?)Familienstand', document.text)[0],
-        'Netto': findall('Währungseinheiten\n(.*?) €', document.text)[0]
+        'Netto': findall('Währungseinheiten\n(.*?) €', document.text)[0],
+        'Arbeitsverhältnis': 'Unbefristet',
+        'Beschäftigt seit': '07.2005'
     }
 
     return beautify(values)

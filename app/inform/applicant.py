@@ -113,7 +113,7 @@ def show_information(information: dict, product: str) -> None:
             else:
                 print('  {:17} - {:17} - Vorhanden - {}'.format(name, detail + ':', value))
 
-    print('\n=> Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
 
 
 def show_documents(application: dict, files: list, product: str) -> None:
@@ -127,7 +127,7 @@ def show_documents(application: dict, files: list, product: str) -> None:
             print('  {:17} - Vorhanden'.format(name + ':'))
             # display(Image(files[document['Id']]))
 
-    print('\n=> Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
 
 
 def successful_application(information: dict, product: str) -> None:
