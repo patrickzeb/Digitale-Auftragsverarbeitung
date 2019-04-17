@@ -95,7 +95,7 @@ def validate(application: dict, information: dict) -> None:
     mismatches = []
 
     valid = True
-    if int(application['Rate']) <= 2 * int(information['Selbstauskunft']['Netto']):
+    if int(application['Product']['Rate']) <= 2 * int(information['Selbstauskunft']['Netto']):
         valid = False
     else:
         mismatches.append('Rate')
