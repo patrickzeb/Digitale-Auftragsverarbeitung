@@ -1,12 +1,12 @@
 import json
-import os
 from io import open
+
 
 # from google.cloud import vision
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'{}\app\config\google_api.json'.format(os.getcwd())
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'{}\app\config\google_api.json'.format(os.getcwd())
 
-client = vision.ImageAnnotatorClient()
+# client = vision.ImageAnnotatorClient()
 
 
 class TextAnnotation(object):
