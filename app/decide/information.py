@@ -74,7 +74,7 @@ def valid_gehaltsnachweis(information: dict) -> list:
     netto = int(information['Selbstauskunft']['Netto'].replace('.', ''))
     plausible = True
 
-    if netto != int(information['Gehaltsnachweis']['Netto'].split(',')[0]):
+    if netto != int(information['Gehaltsnachweis']['Netto'].replace('.', '').split(',')[0]):
         mismatches.append('Netto')
         plausible = False
 

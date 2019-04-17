@@ -122,6 +122,7 @@ def show_documents(application: dict, files: list, product: str) -> None:
     for name, document in application.items():
         if document is None:
             print('  {:17} - Fehlt'.format(name + ':'))
+            complete = False
         else:
             print('  {:17} - Vorhanden'.format(name + ':'))
             # display(Image(files[document['Id']]))
