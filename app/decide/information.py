@@ -11,10 +11,12 @@ def plausible(information: dict) -> dict:
 
     if any(len(details) > 0 for _, details in mismatches.items()):
         print('\n=> Aussteuerung notwendig.')
+        complete = False
     else:
         print('\n=> Aussteuerung nicht notwendig.')
+        complete = True
 
-    return mismatches
+    return complete
 
 
 def plausible_person(information: dict) -> list:
@@ -95,9 +97,8 @@ def validate(application: dict, information: dict) -> None:
     mismatches = []
 
     valid = True
-    if int(application['Product']['Rate']) <= 2 * int(information['Selbstauskunft']['Netto']):
+    if int(application['Product']['Rate'].split(',')[0]) > 2 * int(information['Selbstauskunft']['Netto']):
         valid = False
-    else:
         mismatches.append('Rate')
 
     print('  {:40} - {}'.format('Rate kleiner als halbes Nettoeinkommen', 'Ja' if valid else 'Nein'))
@@ -107,5 +108,9 @@ def validate(application: dict, information: dict) -> None:
 
     if len(mismatches) > 0:
         print('\n=> Aussteuerung notwendig.')
+        complete = False
     else:
         print('\n=> Aussteuerung nicht notwendig.')
+        complete = True
+
+    return complete

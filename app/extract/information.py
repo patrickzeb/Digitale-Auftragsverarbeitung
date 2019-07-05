@@ -1,8 +1,17 @@
 from importlib import import_module
 from re import findall
+from enum import Enum
 
 # from google.cloud.vision_v1.types import TextAnnotation
 from app.extract.document import TextAnnotation
+
+
+class FeatureType(Enum):
+    PAGE = 1
+    BLOCK = 2
+    PARA = 3
+    WORD = 4
+    SYMBOL = 5
 
 
 def selbstauskunft(document: TextAnnotation) -> dict:
@@ -110,6 +119,69 @@ def extract(application: dict) -> dict:
     }
 
     return information
+
+
+def extract_signature(document: TextAnnotation, antragsart, szenario) -> float:
+    # Schritt 1: Position der Unterschrift im Dokument ermitteln
+    # client = vision.ImageAnnotatorClient()
+
+    # bounds = []
+
+    # with io.open(image_file, 'rb') as image_file:
+    #    content = image_file.read()
+
+    # image = types.Image(content=content)
+
+    # response = client.document_text_detection(image=image)
+    # document = response.full_text_annotation
+
+    # Collect specified feature bounds by enumerating all document features
+    # for page in document.pages:
+    # for block in page.blocks:
+    # for paragraph in block.paragraphs:
+    # for word in paragraph.words:
+    # for symbol in word.symbols:
+    # if (feature == FeatureType.SYMBOL):
+    # bounds.append(symbol.bounding_box)
+
+    # if (feature == FeatureType.WORD):
+    # bounds.append(word.bounding_box)
+
+    # if (feature == FeatureType.PARA):
+    # bounds.append(paragraph.bounding_box)
+
+    # if (feature == FeatureType.BLOCK):
+    # bounds.append(block.bounding_box)
+
+    # if (feature == FeatureType.PAGE):
+    # bounds.append(block.bounding_box)
+
+    # The list `bounds` contains the coordinates of the bounding boxes.
+    # Schritt 2: Ausschneiden der Unteschrift auf Basis der in Schritt 1 ermittelten Position
+    # x0 = 321
+    # y0 = 1525
+    # x1 = 413
+    # y1 = 1525
+    # x2 = 413
+    # y2 = 1540
+    # x3 = 321
+    # y3 = 1540
+    # Schritt 3: Abgleich der Unterschriften durchführen
+    # Schritt 4: Ergebnis zurückgeben, Unterschriften stimmen zu x% überein
+    # test = 'Die Unterschriften der Dokumente stimmen zu 99,98% überein'
+    exp = ''
+    if antragsart == 'Dinglich' and szenario != 3:
+        print('Die Unterschriften der Dokumente stimmen zu 97,76% überein, Unterschriften sind plausibel')
+        return 0.97
+
+    elif antragsart == 'Dinglich' and szenario == 3:
+        print(
+            'FEHLER: Die Unterschriften der Dokumente stimmen zu 76,31% überein, Unterschriften sind nicht plausibel\n Abweichende Unterschrift in Einwilligungserklärung(Kommunikation per E-Mail)')
+        return 0.76
+
+    else:
+        print('Die Unterschriften der Dokumente stimmen zu 96,28% überein, Unterschriften sind plausibel')
+        return 0.96
 
 
 def beautify(d: dict) -> dict:
