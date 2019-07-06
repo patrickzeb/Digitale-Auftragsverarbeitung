@@ -3,7 +3,7 @@ import json
 import ipywidgets as widgets
 
 
-def open_applications() -> widgets.Dropdown:
+def open_applications():
     applications = json.load(open('./app/config/application.json', encoding='utf-8'))
 
     unprocessed = [
@@ -23,7 +23,7 @@ def open_applications() -> widgets.Dropdown:
     return dropdown, applications
 
 
-def documents_list() -> widgets.Dropdown:
+def documents_list():
     files = [
         ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
         ['1.jpg', '2.jpg', '3-1.jpg', '4.jpg'],
@@ -51,7 +51,7 @@ def documents_list() -> widgets.Dropdown:
     return dropdown, files
 
 
-def signature_list() -> widgets.Dropdown:
+def signature_list():
     signatures = [
         ['4.jpg'],
         ['2.jpg'],

@@ -2,7 +2,7 @@ from importlib import import_module
 from re import findall
 from enum import Enum
 
-# from google.cloud.vision_v1.types import TextAnnotation
+# from data.cloud.vision_v1.types import TextAnnotation
 from app.extract.document import TextAnnotation
 
 

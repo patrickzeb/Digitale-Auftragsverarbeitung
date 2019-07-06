@@ -4,12 +4,12 @@ from re import findall
 # from gender_guesser.detector import Detector
 
 
-def get_gender(name: str) -> str:
+def get_gender(name: str):
     # return Detector(case_sensitive=False).get_gender(name.split()[0])
     return 'female'
 
 
-def missing_documents(application: dict) -> None:
+def missing_documents(application: dict):
     missing = [name for name, document in application.items() if document is None]
 
     name = findall('Vor- und Zuname (.*?)\n', application['Selbstauskunft']['Content'].text)[0]
@@ -37,7 +37,7 @@ def missing_documents(application: dict) -> None:
     print(text)
 
 
-def missing_information(information: dict) -> None:
+def missing_information(information: dict):
     d = dict()
     for k, v in information.items():
         missing = [l for l, m in v.items() if m is None]
@@ -72,7 +72,7 @@ def missing_information(information: dict) -> None:
     print(text)
 
 
-def unplausible_information(information: dict, mismatches: dict) -> None:
+def unplausible_information(information: dict, mismatches: dict):
     name = information['Selbstauskunft']['Name']
     gender = get_gender(name)
 
@@ -102,7 +102,7 @@ def unplausible_information(information: dict, mismatches: dict) -> None:
     print(text)
 
 
-def show_information(information: dict, product: str) -> None:
+def show_information(information: dict, product: str):
     complete = True
     print('Die Bewilligung des {}-Darlehens erfordert folgende Informationen:'.format(product))
     for name, details in information.items():
@@ -117,7 +117,7 @@ def show_information(information: dict, product: str) -> None:
     return complete
 
 
-def show_checklist(product: str, files: int) -> None:
+def show_checklist(product: str, files: int):
     from IPython.display import Image
     if product == "Blanko" and files == 0:
         doc_list = './upload/doc_checklist/Checkliste_4.jpg'
@@ -142,7 +142,7 @@ def show_checklist(product: str, files: int) -> None:
     return complete
 
 
-def show_checklist2(application: dict, files: list, product: str) -> None:
+def show_checklist2(application: dict, files: list, product: str):
     complete = True
     print('Die Bewilligung des {}-Darlehens erfordert folgende Dokumente:'.format(product))
     for name, document in application.items():
@@ -156,7 +156,7 @@ def show_checklist2(application: dict, files: list, product: str) -> None:
     print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
 
 
-def show_application(application: str) -> None:
+def show_application(application: str):
     from IPython.display import Image
     if application == "Blanko":
         application_list = './upload/appl_upload/application_blanko.jpg'
@@ -167,7 +167,7 @@ def show_application(application: str) -> None:
     display(Image(filename=application_list))
 
 
-def show_documents(files: int) -> None:
+def show_documents(files: int):
     from IPython.display import Image
     if files == 0:
         doc_list = './upload/doc_upload/1.jpg'
@@ -196,7 +196,7 @@ def show_ampel(status):
     display(Image(filename=logo))
 
 
-def successful_application(information: dict, product: str) -> None:
+def successful_application(information: dict, product: str):
     name = information['Selbstauskunft']['Name']
     gender = get_gender(name)
 

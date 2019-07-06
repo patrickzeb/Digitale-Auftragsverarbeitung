@@ -1,7 +1,7 @@
 import time
 
 
-def plausible(information: dict) -> dict:
+def plausible(information: dict):
     print('Die Plausibilisierung der Informationen basiert auf folgenden Regeln:')
 
     mismatches = {
@@ -19,7 +19,7 @@ def plausible(information: dict) -> dict:
     return complete
 
 
-def plausible_person(information: dict) -> list:
+def plausible_person(information: dict):
     mismatches = []
 
     name = information['Selbstauskunft']['Name']
@@ -58,7 +58,7 @@ def plausible_person(information: dict) -> list:
     return mismatches
 
 
-def valid_gehaltsnachweis(information: dict) -> list:
+def valid_gehaltsnachweis(information: dict):
     mismatches = []
 
     current_month = int(time.strftime('%m'))
@@ -87,7 +87,7 @@ def valid_gehaltsnachweis(information: dict) -> list:
     return mismatches
 
 
-def validate(application: dict, information: dict) -> None:
+def validate(application: dict, information: dict):
     collateralized = 'Collateral' in application
 
     print('Die Validierung des {}besicherten Darlehens basiert auf folgenden Regeln:'.format(

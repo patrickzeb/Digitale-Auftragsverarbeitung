@@ -3,7 +3,7 @@ from io import open
 from time import sleep
 
 
-# from google.cloud import vision
+# from data.cloud import vision
 
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'{}\app\config\google_api.json'.format(os.getcwd())
 
@@ -15,7 +15,7 @@ class TextAnnotation(object):
         self.text = text
 
 
-FILE = './app/google/google.json'
+FILE = './app/data/data.json'
 with open(FILE, encoding='utf-8') as file:
     GOOGLE = json.load(file)['Documents']
 
