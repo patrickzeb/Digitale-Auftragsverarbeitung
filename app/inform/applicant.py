@@ -1,105 +1,30 @@
-from re import findall
+from IPython.display import Image
 
 
-# from gender_guesser.detector import Detector
+def show_application(application: str):
+    if application == "Blanko":
+        application_list = './upload/appl_upload/application_blanko.jpg'
+    elif application == "Dinglich":
+        application_list = './upload/appl_upload/application_dinglich.jpg'
+
+    print('Folgender Antrag wurde übermittelt:')
+
+    display(Image(filename=application_list))
 
 
-def get_gender(name: str):
-    # return Detector(case_sensitive=False).get_gender(name.split()[0])
-    return 'female'
+def show_documents(files: int):
+    if files == 0:
+        doc_list = './upload/doc_upload/1.jpg'
+    elif files == 1:
+        doc_list = './upload/doc_upload/2.jpg'
+    elif files == 2:
+        doc_list = './upload/doc_upload/3.jpg'
+    else:
+        doc_list = './upload/doc_upload/4.jpg'
 
+    print('\nFolgende Dokumente wurden übermittelt:')
 
-def missing_documents(application: dict):
-    missing = [name for name, document in application.items() if document is None]
-
-    name = findall('Vor- und Zuname (.*?)\n', application['Selbstauskunft']['Content'].text)[0]
-    gender = get_gender(name)
-
-    text = """
-    Liebe{} {},
-
-    leider sind Deine eingereichten Unterlagen unvollständig.
-
-    Damit wir Deinen Antrag schnellstmöglich bearbeiten können, reiche bitte die folgende(n) Unterlage(n) nach:
-
-    Unterlagen:
-    """.format('' if gender == 'female' else 'r', name)
-
-    for k in missing:
-        text += '\t\t- {}\n'.format(k)
-
-    text += """
-
-    Freundliche Grüße
-    Die Bausparkasse Schwäbisch Hall
-    """
-
-    print(text)
-
-
-def missing_information(information: dict):
-    d = dict()
-    for k, v in information.items():
-        missing = [l for l, m in v.items() if m is None]
-        d[k] = missing
-
-    name = information['Selbstauskunft']['Name']
-    gender = get_gender(name)
-
-    text = """
-    Liebe{} {},
-
-    leider sind Deine eingereichten Unterlagen unvollständig.
-
-    Damit wir Deinen Antrag schnellstmöglich bearbeiten können, ergänze bitte die folgende(n) Information(en):
-
-    Informationen:
-    """.format('' if gender == 'female' else 'r', name)
-
-    for k, v in d.items():
-        if len(v) == 0:
-            continue
-
-        text += '\t{}:\n'.format(k.capitalized())
-        for l in v:
-            text += '  \t\t- {}\n'.format(l)
-
-    text += """
-    Freundliche Grüße
-    Die Bausparkasse Schwäbisch Hall
-    """
-
-    print(text)
-
-
-def unplausible_information(information: dict, mismatches: dict):
-    name = information['Selbstauskunft']['Name']
-    gender = get_gender(name)
-
-    text = """
-    Liebe{} {},
-
-    leider ergeben sich Unstimmigkeiten zwischen Deinen eingereichten Unterlagen.
-
-    Damit wir Deinen Antrag schnellstmöglich bearbeiten können, überprüfe bitte folgende Daten:
-
-    Daten:
-    """.format('' if gender == 'female' else 'r', name)
-
-    for k, v in mismatches.items():
-        if len(v) == 0:
-            continue
-
-        text += '\t{}:\n'.format(k.capitalize())
-        for l in v:
-            text += '\t\t- {}\n'.format(l.capitalize())
-
-    text += """
-    Freundliche Grüße    
-    Die Bausparkasse Schwäbisch Hall
-    """
-
-    print(text)
+    display(Image(filename=doc_list))
 
 
 def show_information(information: dict, product: str):
@@ -154,32 +79,6 @@ def show_checklist2(application: dict, files: list, product: str):
             # display(Image(files[document['Id']]))
 
     print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
-
-
-def show_application(application: str):
-    from IPython.display import Image
-    if application == "Blanko":
-        application_list = './upload/appl_upload/application_blanko.jpg'
-    elif application == "Dinglich":
-        application_list = './upload/appl_upload/application_dinglich.jpg'
-
-    print('Der folgende Antrag wurde ausgewäht:')
-    display(Image(filename=application_list))
-
-
-def show_documents(files: int):
-    from IPython.display import Image
-    if files == 0:
-        doc_list = './upload/doc_upload/1.jpg'
-    elif files == 1:
-        doc_list = './upload/doc_upload/2.jpg'
-    elif files == 2:
-        doc_list = './upload/doc_upload/3.jpg'
-    else:
-        doc_list = './upload/doc_upload/4.jpg'
-
-    print('Die folgenden Dokumente wurden hochgeladen:')
-    display(Image(filename=doc_list))
 
 
 def show_ampel(status):
