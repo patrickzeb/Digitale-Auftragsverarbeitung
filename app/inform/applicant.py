@@ -38,7 +38,7 @@ def show_information(information: dict, product: str):
             else:
                 print('  {:17} - {:17} - Vorhanden - {}'.format(name, detail + ':', value))
 
-    print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    # print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
     return complete
 
 
@@ -63,7 +63,7 @@ def show_checklist(product: str, files: int):
     print('Die Dokumentencheckliste wurde wie folgt abgearbeitet:')
     display(Image(filename=doc_list, width=400))
 
-    print('Ergebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    # print('Ergebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
     return complete
 
 
@@ -78,7 +78,8 @@ def show_checklist2(application: dict, files: list, product: str):
             print('  {:17} - Vorhanden'.format(name + ':'))
             # display(Image(files[document['Id']]))
 
-    print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    # print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
+    return complete
 
 
 def show_ampel(status):
