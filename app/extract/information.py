@@ -522,3 +522,29 @@ def is_int(s):
         return True
     except ValueError:
         return False
+
+
+def extract_grundbuchauszug():
+
+    #Grundbuchauszug, Dummy Values
+    dataAufschrift = [["Amtsgericht", "Blattnummer", "Auszugsdatum", "Band"],
+                      ["Hamburg", "73", "29.06.2019", "5"],
+                      ]
+
+    dataBestand = [["LfdNr Eintragung", "LfdNr Grundstück", "Germarkung", "Lage", "Größe"],
+                   ["1", "1", "35", "20", "150"],
+                   ]
+
+    dataAbt1 = [["LfdNr Eintragung", "LfdNr Grundstück", "Eigentümer", "Eintragsdatum"],
+                ["1", "1", "Max Mustermann, geb. 01.01.1975, Hamburg", "27.06.2016"],
+                ]
+
+    dataAbt2 = [["LfdNr Eintragung", "LfdNr Grundstück", "Eintragsdatum", "Art des Rechts", "Ranginformation"],
+                ["1", "1", "25.5.1998", "Beschränkt persönliche Dienstbarkeit: Leitungsrecht", "-"],
+                ]
+
+    dataAbt3 = [["LfdNr Eintragung", "LfdNr Grundstück", "Eintragsdatum", "Art des Rechts", "Betrag"],
+                ["1", "1", "24.10.2000", "Grundschuld", "200.000,00 EUR"],
+                ]
+
+    return dataAufschrift, dataBestand, dataAbt1, dataAbt2, dataAbt3
