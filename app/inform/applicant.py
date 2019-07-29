@@ -31,8 +31,10 @@ def show_information(information: dict, product: str):
     complete = True
     print('Die Bewilligung des {}-Darlehens erfordert folgende Informationen:'.format(product))
     for name, details in information.items():
+        if details['vorhanden'] == "nein":
+            continue
         for detail, value in details.items():
-            if value is None:
+            if value is "":
                 complete = False
                 print('  {:17} - {:17} - Fehlt'.format(name, detail + ':'))
             else:
@@ -40,6 +42,52 @@ def show_information(information: dict, product: str):
 
     # print('\nErgebnis: Aussteuerung {}notwendig.'.format('nicht ' if complete else ''))
     return complete
+
+
+def doc_checklist(application: str, missing: list) -> bool:
+    if application == "Blanko":
+        application = "Blankodarlehen"
+    else:
+        application = "dinglich besichertes Darlehen"
+
+    if len(missing) > 1:
+        return_val = False
+
+        missing_docs = ""
+        for v in missing:
+            missing_docs += "- " + v + "\n"
+
+        text = """
+Lieber Kunde,
+
+für dein {} wurden leider nicht alle Dokumente eingereicht. Bitte reiche die folgenden Dokumente nach:
+{}
+
+Besten Dank und viele Grüße, 
+deine zeb.Bank
+        """.format(application, missing_docs)
+    elif len(missing) > 0:
+        return_val = False
+        text = """
+Lieber Kunde,
+
+für dein {} wurden leider nicht alle Dokumente eingereicht. Bitte reiche das folgende Dokument nach:
+{}
+
+Besten Dank und viele Grüße, 
+deine zeb.Bank""".format(application, "- " + missing[0] + "\n")
+    else:
+        return_val = True
+        text = """
+Lieber Kunde,
+
+das Dokumentenpaket war vollständig, wir werden deinen Antrag nun schnellstmöglich bearbeiten.
+
+Besten Dank und viele Grüße,
+deine zeb.Bank"""
+
+    print(text)
+    return return_val
 
 
 def show_checklist(product: str, files: int):
