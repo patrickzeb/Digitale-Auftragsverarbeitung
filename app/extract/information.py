@@ -6,6 +6,7 @@ from enum import Enum
 from app.extract.document import TextAnnotation
 from app.extract.googlevision import ocr
 from datetime import datetime
+from app.extract.googleML import grundbuchtext_ml
 
 
 class FeatureType(Enum):
@@ -377,9 +378,11 @@ def einwilligung_kommunikation(document: TextAnnotation) -> dict:
 
 
 def grundbuchauszug(document: TextAnnotation) -> dict:
-    name = findall('Alleineinentum\n(.*?)\n', document.text)[0].split(", ")[0]
-    geburtsdatum = findall('Alleineinentum\n(.*?)\n', document.text)[0].split(", ")[1]
-
+    # TODO: Anpassung neuer Grundbuchauszug
+    #name = findall('Alleineinentum\n(.*?)\n', document.text)[0].split(", ")[0]
+    #geburtsdatum = findall('Alleineinentum\n(.*?)\n', document.text)[0].split(", ")[1]
+    name = "Ursula Müller"
+    geburtsdatum = "23.05.1973"
     values = {
         'Name': name,
         'Geburtsdatum': correct_dates(geburtsdatum)
@@ -525,8 +528,13 @@ def is_int(s):
 
 
 def extract_grundbuchauszug():
+    # TODO: Datei aus ML richtig anbinden
+    #filepath = "app/data/grundbuchauszug_text.txt"
+    #with open(filepath) as fp:
+    #for cnt, line in enumerate(fp):
+    #zeile = line.split("\n")
+    #content = zeile.split(";")
 
-    #Grundbuchauszug, Dummy Values
     dataAufschrift = [["Amtsgericht", "Blattnummer", "Auszugsdatum", "Band"],
                       ["Hamburg", "73", "29.06.2019", "5"],
                       ]

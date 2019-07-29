@@ -1,0 +1,5 @@
+"Amtsgericht", "Blattnummer", "Auszugsdatum", "Band", "Typ";"Hamburg", "73", "29.06.2019", "5", "Aufschrift"
+"LfdNr Eintragung", "LfdNr Grundstück", "Germarkung", "Lage", "Größe", "Typ";"1", "1", "35", "20", "150", "Bestandsverzeichnis"
+"LfdNr Eintragung", "LfdNr Grundstück", "Eigentümer", "Eintragsdatum", "Typ";"1", "1", "Max Mustermann, geb. 01.01.1975, Hamburg", "27.06.2016", "Abteilung I"
+"LfdNr Eintragung", "LfdNr Grundstück", "Eintragsdatum", "Art des Rechts", "Ranginformation", "Typ";"1", "1", "25.5.1998", "Beschränkt persönliche Dienstbarkeit: Leitungsrecht", "-", "Abteilung II"
+"LfdNr Eintragung", "LfdNr Grundstück", "Eintragsdatum", "Art des Rechts", "Betrag", "Typ";"1", "1", "24.10.2000", "Grundschuld", "200.000,00 EUR", "Abteilung III"
