@@ -1,4 +1,5 @@
 import time
+import json
 
 
 def plausible(information: dict):
@@ -22,33 +23,33 @@ def plausible(information: dict):
 def plausible_person(information: dict):
     mismatches = []
 
-    name = information['Selbstauskunft']['Name']
+    name = information['Selbstauskunft']['name']
     plausible = True
 
     documents = {k: v for k, v in information.items() if k != 'Selbstauskunft'}
     for doc, infos in documents.items():
-        if infos['Name'] != name:
-            mismatches.append('Name')
+        if infos['name'] != name:
+            mismatches.append('name')
             plausible = False
 
     print('  {:40} - {}'.format('Name stimmt überein?', 'Ja' if plausible else 'Nein'))
 
-    geburtsdatum = information['Selbstauskunft']['Geburtsdatum']
+    geburtsdatum = information['Selbstauskunft']['geburtsdatum']
     plausible = True
 
-    if geburtsdatum != information['Gehaltsnachweis']['Geburtsdatum']:
-        mismatches.append('Geburtsdatum')
+    if geburtsdatum != information['Gehaltsnachweis']['geburtsdatum']:
+        mismatches.append('geburtsdatum')
         plausible = False
 
     print('  {:40} - {}'.format('Geburtsdatum stimmt überein?', 'Ja' if plausible else 'Nein'))
 
-    anschrift = information['Selbstauskunft']['Anschrift']
+    anschrift = information['Selbstauskunft']['adresse']
     plausible = True
 
     documents = {k: v for k, v in information.items() if k not in ['Selbstauskunft', 'Grundbuchauszug']}
     for doc, infos in documents.items():
-        if infos['Anschrift'] != anschrift:
-            mismatches.append('Anschrift')
+        if infos['adresse'] != anschrift:
+            mismatches.append('adresse')
             plausible = False
 
     print('  {:40} - {}'.format('Anschrift stimmt überein?', 'Ja' if plausible else 'Nein'))
@@ -64,19 +65,20 @@ def valid_gehaltsnachweis(information: dict):
     current_month = int(time.strftime('%m'))
     current_year = int(time.strftime('%Y'))
 
-    month, year = [int(value) for value in information['Gehaltsnachweis']['Datum'].split('.')]
+    # month, year = [int(value) for value in information['Gehaltsnachweis']['Datum'].split('.')]
     plausible = True
 
-    if current_year != year or current_month - month >= 2:
+    # if current_year != year or current_month - month >= 2:
+    if current_year != information['Gehaltsnachweis']['jahr'] or current_month - information['Gehaltsnachweis']['monat'] >= 2:
         mismatches.append('Jahr')
         plausible = False
 
     print('  {:40} - {}'.format('Gehaltsnachweis nicht älter als 1 Monat?', 'Ja' if plausible else 'Nein'))
 
-    netto = int(information['Selbstauskunft']['Netto'].replace('.', ''))
+    netto = int(information['Selbstauskunft']['nettoeinkommen'].replace('.', ''))
     plausible = True
 
-    if netto != int(information['Gehaltsnachweis']['Netto'].replace('.', '').split(',')[0]):
+    if netto != int(information['Gehaltsnachweis']['nettogehalt'].replace('.', '').split(',')[0]):
         mismatches.append('Netto')
         plausible = False
 
@@ -87,8 +89,12 @@ def valid_gehaltsnachweis(information: dict):
     return mismatches
 
 
-def validate(application: dict, information: dict):
-    collateralized = 'Collateral' in application
+def validate(application: str, information: dict):
+    APPLICATION_FILE = './app/config/application.json'
+    with open(APPLICATION_FILE, encoding='utf-8') as file:
+        APPLICATION = json.load(file)
+
+    collateralized = 'Collateral' in APPLICATION
 
     print('Die Validierung des {}besicherten Darlehens basiert auf folgenden Regeln:'.format(
         '' if collateralized else 'un'
@@ -97,7 +103,7 @@ def validate(application: dict, information: dict):
     mismatches = []
 
     valid = True
-    if int(application['Product']['Rate'].split(',')[0]) > 2 * int(information['Selbstauskunft']['Netto']):
+    if int(APPLICATION[application]['Product']['Rate'].split(',')[0]) > 2 * int(information['Selbstauskunft']['nettoeinkommen']):
         valid = False
         mismatches.append('Rate')
 
