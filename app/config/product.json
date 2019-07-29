@@ -1,60 +1,20 @@
 {
   "Blanko": {
-    "Required": {
-      "Selbstauskunft": {
-        "Keywords": [
-          "selbstauskunft"
-        ]
-      },
-      "Gehaltsnachweis": {
-        "Keywords": [
-          "abrechnung"
-        ]
-      },
-      "Schufa": {
-        "Keywords": [
-          "schufa"
-        ]
-      },
-      "Kommunikation": {
-        "Keywords": [
-          "kommunikation"
-        ]
-      }
-    }
+    "Dokumente": [
+      "Selbstauskunft",
+      "Gehaltsnachweis",
+      "Schufa",
+      "Kommunikation"
+    ]
   },
   "Dinglich": {
-    "Required": {
-      "Selbstauskunft": {
-        "Keywords": [
-          "selbstauskunft"
-        ]
-      },
-      "Gehaltsnachweis": {
-        "Keywords": [
-          "abrechnung"
-        ]
-      },
-      "Schufa": {
-        "Keywords": [
-          "schufa"
-        ]
-      },
-      "Kommunikation": {
-        "Keywords": [
-          "kommunikation"
-        ]
-      },
-      "Grundbuchauszug": {
-        "Keywords": [
-          "grundbuch"
-        ]
-      },
-      "Personalausweis": {
-        "Keywords": [
-          "personalausweis"
-        ]
-      }
-    }
+    "Dokumente": [
+      "Selbstauskunft",
+      "Gehaltsnachweis",
+      "Schufa",
+      "Kommunikation",
+      "Grundbuchauszug",
+      "Personalausweis"
+    ]
   }
 }
